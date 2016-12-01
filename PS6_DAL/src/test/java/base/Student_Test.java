@@ -28,7 +28,7 @@ public class Student_Test {
 
 	@Test
 	public void test() {
-		assertTrue(1==1);
+		assertTrue(1 == 1);
 	}
 
 }

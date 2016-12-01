@@ -20,50 +20,50 @@ import ch.makery.address.model.Person;
  */
 public class BirthdayStatisticsController {
 
-    @FXML
-    private BarChart<String, Integer> barChart;
+	@FXML
+	private BarChart<String, Integer> barChart;
 
-    @FXML
-    private CategoryAxis xAxis;
+	@FXML
+	private CategoryAxis xAxis;
 
-    private ObservableList<String> monthNames = FXCollections.observableArrayList();
+	private ObservableList<String> monthNames = FXCollections.observableArrayList();
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-        // Get an array with the English month names.
-        String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
-        // Convert it to a list and add it to our ObservableList of months.
-        monthNames.addAll(Arrays.asList(months));
+	/**
+	 * Initializes the controller class. This method is automatically called
+	 * after the fxml file has been loaded.
+	 */
+	@FXML
+	private void initialize() {
+		// Get an array with the English month names.
+		String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
+		// Convert it to a list and add it to our ObservableList of months.
+		monthNames.addAll(Arrays.asList(months));
 
-        // Assign the month names as categories for the horizontal axis.
-        xAxis.setCategories(monthNames);
-    }
+		// Assign the month names as categories for the horizontal axis.
+		xAxis.setCategories(monthNames);
+	}
 
-    /**
-     * Sets the persons to show the statistics for.
-     * 
-     * @param persons
-     */
-    public void setPersonData(List<Person> persons) {
-        // Count the number of people having their birthday in a specific month.
-        int[] monthCounter = new int[12];
-        for (Person p : persons) {
-            @SuppressWarnings("deprecation")
+	/**
+	 * Sets the persons to show the statistics for.
+	 * 
+	 * @param persons
+	 */
+	public void setPersonData(List<Person> persons) {
+		// Count the number of people having their birthday in a specific month.
+		int[] monthCounter = new int[12];
+		for (Person p : persons) {
+			@SuppressWarnings("deprecation")
 			int month = p.getBirthday().getMonth() - 1;
-            monthCounter[month]++;
-        }
+			monthCounter[month]++;
+		}
 
-        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+		XYChart.Series<String, Integer> series = new XYChart.Series<>();
 
-        // Create a XYChart.Data object for each month. Add it to the series.
-        for (int i = 0; i < monthCounter.length; i++) {
-            series.getData().add(new XYChart.Data<>(monthNames.get(i), monthCounter[i]));
-        }
+		// Create a XYChart.Data object for each month. Add it to the series.
+		for (int i = 0; i < monthCounter.length; i++) {
+			series.getData().add(new XYChart.Data<>(monthNames.get(i), monthCounter[i]));
+		}
 
-        barChart.getData().add(series);
-    }
+		barChart.getData().add(series);
+	}
 }

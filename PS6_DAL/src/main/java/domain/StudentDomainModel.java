@@ -3,21 +3,20 @@ package domain;
 import java.util.Date;
 import java.util.UUID;
 
-public class StudentDomainModel  {
+public class StudentDomainModel {
 
-	
 	private UUID StudentID;
 	private String FirstName;
 	private String MiddleName;
 	private String LastName;
 	private Date DOB;
-	
-	
+
 	protected StudentDomainModel() {
 	}
 
 	/**
 	 * Student - This constructor will generate a new instance of Student.
+	 * 
 	 * @param firstName
 	 * @param middleName
 	 * @param lastName
@@ -25,36 +24,37 @@ public class StudentDomainModel  {
 	 */
 	public StudentDomainModel(String firstName, String middleName, String lastName, Date dOB) {
 		super();
-		this.setStudentID(UUID.randomUUID());		
+		this.setStudentID(UUID.randomUUID());
 		FirstName = firstName;
 		MiddleName = middleName;
 		LastName = lastName;
-		DOB = dOB;		
+		DOB = dOB;
 	}
 
-	public StudentDomainModel(StudentDomainModel stu)
-	{
+	public StudentDomainModel(StudentDomainModel stu) {
 		super();
-		this.setStudentID(UUID.randomUUID());		
+		this.setStudentID(UUID.randomUUID());
 		FirstName = stu.getFirstName();
 		MiddleName = stu.getMiddleName();
 		LastName = stu.getLastName();
 		DOB = stu.getDOB();
-		
+
 	}
-	
+
 	/**
 	 * Student - This constructor will retrieve a give student ID's record.
+	 * 
 	 * @param studentID
 	 */
 	public StudentDomainModel(UUID studentID) {
 		super();
-		StudentID = studentID;		
+		StudentID = studentID;
 	}
 
 	public UUID getStudentID() {
 		return StudentID;
 	}
+
 	private void setStudentID(UUID studentID) {
 		StudentID = studentID;
 	}
@@ -90,6 +90,5 @@ public class StudentDomainModel  {
 	public void setDOB(Date dOB) {
 		DOB = dOB;
 	}
-	
-	
+
 }
